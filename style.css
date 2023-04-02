@@ -177,6 +177,10 @@ input[type="range"]:focus::-moz-range-thumb{
     font-family: 'Nekst-Black', 'Arial', sans-serif;
 }
 
+.submit:hover {
+  background-color: #111111;
+}
+
 /*@media (min-width: 320px) and (max-width: 479px){
   .title{
     color: red;
