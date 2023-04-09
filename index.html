@@ -16,20 +16,20 @@
                 <h3 class="input-title">Стоимость автомобиля</h3>
                 <div class="range-box">
                     <div class="input-value">
-                        <span>3 350 000 </span>
+                        <span id="priceValue">3 350 000 </span>
                         <span class="currency">₽</span>
                     </div>
-                    <input type="range" class="range" />
+                    <input type="range" class="range" id="price" value="10" />
             </div>
             </div>
             <div class="input-wrapper">
                 <h3 class="input-title">Первоначальный взнос</h3>
                 <div class="range-box">
                     <div class="input-value">
-                        <span>420 000 ₽ </span>
+                        <span>420 000 </span><span>₽</span>
                         <span class="percentage-box">13%</span>
                     </div>
-                    <input type="range" class="range" />
+                    <input type="range" class="range" id="invest" />
                 </div>
             </div>
             <div class="input-wrapper">
@@ -39,7 +39,7 @@
                     <span>60</span>    
                     <span class="currency">мес.</span>
                 </div>
-                    <input type="range" class="range" />
+                    <input type="range" class="range" id="term" />
                 </div>
             </div>
         </div>
@@ -53,12 +53,34 @@
                 <div class="title">114 455 ₽</div>
             </div>
             <div class="summary-wrapper">
-                <button class="submit">
+                <button class="submit" id="submit">
                 Оставить заявку
                 </button>
             </div>
         </div>
     </div>
 </div>
+<script>
+const price = document.getElementById("price");
+const priceValue = document.getElementById("priceValue");
+const submit = document.getElementById("submit");
+console.log(priceValue);
+price.onchange = function(){
+    console.log(price.value);
+    priceValue.innerHTML = price.value*100000;
+}
+submit.onclick = function() {
+    if(document.body.style.background === "green"){
+        document.body.style.background = "red";
+    }
+    else {
+        document.body.style.background = "green";
+    }
+}
+/*const price = document.getElementById("price");
+console.log(title);
+const price = document.getElementById("price");
+console.log(title);*/
+</script>
 </body>
 </html>
