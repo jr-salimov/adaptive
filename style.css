@@ -69,11 +69,12 @@
 
 /* Input slider boxes */
 .range-box {
+  position: relative;
   background-color: #F3F3F4;
   padding: 16px 24px;
   border-radius: 16px;
   width: 427px;
-  height: 64px;
+  height: 68px;
 }
 
 /* Titles of each slider-boxes */
@@ -87,7 +88,10 @@
 }
 
 /*********** Baseline, reset styles ***********/
-input[type="range"] {
+.range {
+  position: absolute;
+  bottom: 0px;
+  left: 20px;
   -webkit-appearance: none;
   appearance: none;
   background: transparent;
@@ -96,20 +100,20 @@ input[type="range"] {
 }
 
 /* Removes default focus */
-input[type="range"]:focus {
+.range:focus {
   outline: none;
 }
 
 /******** Chrome, Safari, Opera and Edge Chromium styles ********/
 /* slider track */
-input[type="range"]::-webkit-slider-runnable-track {
+.range::-webkit-slider-runnable-track {
   background-color: #ff9514;
   border-radius: 12rem;
   height: 2px;
 }
 
 /* slider thumb */
-input[type="range"]::-webkit-slider-thumb {
+.range::-webkit-slider-thumb {
   -webkit-appearance: none; /* Override default look */
   appearance: none;
   margin-top: -9px; /* Centers thumb on the track */
@@ -119,21 +123,21 @@ input[type="range"]::-webkit-slider-thumb {
   width: 20px;
 }
 
-input[type="range"]:focus::-webkit-slider-thumb {
+.range:focus::-webkit-slider-thumb {
   outline: 3px solid #ff9514;
   outline-offset: 0.125rem;
 }
 
 /*********** Firefox styles ***********/
 /* slider track */
-input[type="range"]::-moz-range-track {
+.range::-moz-range-track {
   background-color: #ff9514;
   border-radius: 12rem;
   height: 2px;
 }
 
 /* slider thumb */
-input[type="range"]::-moz-range-thumb {
+.range::-moz-range-thumb {
   background-color: #ff9514;
   border: none; /*Removes extra border that FF applies*/
   border-radius: 12px;
@@ -141,7 +145,7 @@ input[type="range"]::-moz-range-thumb {
   width: 20px;
 }
 
-input[type="range"]:focus::-moz-range-thumb{
+.range:focus::-moz-range-thumb{
   outline: 3px solid #ff9514;
   outline-offset: 0.125rem;
 }
@@ -206,6 +210,31 @@ input[type="range"]:focus::-moz-range-thumb{
 .currency {
   margin-left: auto;
 }
+
+.percentage-box {
+  margin-top: -9px;
+  margin-left: auto;
+  background-color: #EBEBEC;
+  border-radius: 16px;
+  width: 68px;
+  height: 54px;
+  padding: 7px 7px;
+}
+
+@media only screen and (max-width: 1120px){
+  .container {
+    justify-content: flex-start;
+    padding-top: 212px;
+  } 
+  .inputs {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 32px;
+    justify-content: space-between;
+    margin-bottom: 51px;
+  }
+ }
 
 @media only screen and (max-width: 768px){
   .container {
