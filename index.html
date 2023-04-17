@@ -10,47 +10,49 @@
 <body>
 <div class="container">
     <div class="block">
-        <h1 class="title">Рассчитайте стоимость автомобиля в лизинг</h1>
+        <h1 class="main-title">Рассчитайте стоимость автомобиля в лизинг</h1>
         <div class="inputs">
             <div class="input-wrapper">
-                <h3 class="input-title">Стоимость автомобиля</h3>
+                <h3 class="input-title-1">Стоимость автомобиля</h3>
+                <h3 class="input-title-alt">Желаемая сумма кредита</h3>
                 <div class="range-box">
                     <div class="input-value">
                         <span id="priceValue">3 350 000 </span>
                         <span class="currency">₽</span>
                     </div>
-                    <input type="range" class="range" id="price" value="10" />
+                    <input type="range" class="range" id="price" min="150000" max="3500000"/>
             </div>
             </div>
             <div class="input-wrapper">
                 <h3 class="input-title">Первоначальный взнос</h3>
                 <div class="range-box">
                     <div class="input-value">
-                        <span>420 000 </span><span>₽</span>
+                        <span id="investValue">420 000 &nbsp;</span><span>₽</span>
                         <span class="percentage-box">13%</span>
+                        <span class="percentage-box-alt">10%</span>
                     </div>
-                    <input type="range" class="range" id="invest" />
+                    <input type="range" class="range" id="invest" min="10000" max="1000000" />
                 </div>
             </div>
             <div class="input-wrapper">
                 <h3 class="input-title">Срок лизинга</h3>
                 <div class="range-box">
                 <div class="input-value">
-                    <span>60</span>    
+                    <span id="termValue">60</span>    
                     <span class="currency">мес.</span>
                 </div>
-                    <input type="range" class="range" id="term" />
+                    <input type="range" class="range" id="term" value="60" min="1" max="90" />
                 </div>
             </div>
         </div>
         <div class="summary">
             <div class="summary-wrapper">
                 <div class="summary-title">Сумма договора лизинга</div>
-                <div class="title">4 467 313 ₽</div>
+                <div class="title" id="leaseSum">4 467 313 ₽</div>
             </div>
             <div class="summary-wrapper">
                 <div class="summary-title">Ежемесячный платеж от</div>
-                <div class="title">114 455 ₽</div>
+                <div class="title" id="monthlyPayment">114 455 ₽</div>
             </div>
             <div class="summary-wrapper">
                 <button class="submit" id="submit">
@@ -60,27 +62,36 @@
         </div>
     </div>
 </div>
+
 <script>
 const price = document.getElementById("price");
+const invest = document.getElementById("invest");
+const term = document.getElementById("term");
 const priceValue = document.getElementById("priceValue");
+const investValue = document.getElementById("investValue");
+const termValue = document.getElementById("termValue");
+const leaseSum = document.getElementById("leaseSum");
+const monthlyPayment = document.getElementById("monthlyPayment");
 const submit = document.getElementById("submit");
-console.log(priceValue);
+
 price.onchange = function(){
-    console.log(price.value);
-    priceValue.innerHTML = price.value*100000;
+    priceValue.innerHTML = String(price.value).replace(/(\d)(?=(\d{3})+([^\d]|$))/g, "$1 ");
 }
+
+invest.onchange = function(){
+    investValue.innerHTML = String(invest.value).replace(/(\d)(?=(\d{3})+([^\d]|$))/g, "$1 ");
+}
+
+term.onchange = function(){
+    termValue.innerHTML = term.value;
+}
+
 submit.onclick = function() {
-    if(document.body.style.background === "green"){
-        document.body.style.background = "red";
-    }
-    else {
-        document.body.style.background = "green";
-    }
+    var leasing = price.value - invest.value;
+    leaseSum.innerHTML = String(leasing).replace(/(\d)(?=(\d{3})+([^\d]|$))/g, "$1 ") + " ₽";
+    var payment = Math.round((leasing - invest.value) * (0.13 / 12 + 0.13 / 12 / ((Math.pow((1 + 0.13 / 12), term.value)-1))));
+    monthlyPayment.innerHTML = String(payment).replace(/(\d)(?=(\d{3})+([^\d]|$))/g, "$1 ") + " ₽";
 }
-/*const price = document.getElementById("price");
-console.log(title);
-const price = document.getElementById("price");
-console.log(title);*/
 </script>
 </body>
 </html>

@@ -32,7 +32,7 @@
 }
 
 /* Big h1 title above all elements in the content */
-.title, .submit-text {
+.main-title, .title, .submit-text {
   max-width: 753px;
   font-size: 54px;
   line-height: 48.6px;
@@ -78,7 +78,7 @@
 }
 
 /* Titles of each slider-boxes */
-.input-title, .summary-title{
+.input-title, .input-title-alt, .input-title-1, .summary-title{
   font-size: 16px;
   font-weight: 400px;
   margin-bottom: 24px;
@@ -87,6 +87,9 @@
   color: #575757;
 }
 
+.input-title-alt {
+  display: none;
+}
 /*********** Baseline, reset styles ***********/
 .range {
   position: absolute;
@@ -149,6 +152,7 @@
   outline: 3px solid #ff9514;
   outline-offset: 0.125rem;
 }
+
 /* Third block, a.k.a. Outputs and a button */
 .summary {
   display: flex;
@@ -211,7 +215,7 @@
   margin-left: auto;
 }
 
-.percentage-box {
+.percentage-box, .percentage-box-alt {
   margin-top: -9px;
   margin-left: auto;
   background-color: #EBEBEC;
@@ -219,6 +223,10 @@
   width: 68px;
   height: 54px;
   padding: 7px 7px;
+}
+
+.percentage-box-alt {
+  display: none;
 }
 
 @media only screen and (max-width: 1120px){
@@ -242,10 +250,60 @@
     padding-top: 64px;
   } 
  }
-
+/************ Phone size ************/
  @media only screen and (max-width: 320px){
   .container {
     justify-content: flex-start;
     padding-top: 44px;
-  } 
- }
+  }
+  .main-title {
+    font-size: 34px;
+    line-height: 30.6px;
+  }
+  .input-title, .summary-title{
+    font-size: 14px;
+    font-weight: 400px;
+    line-height: 19.04px;
+    color: #333E48;
+  }
+  .input-title-1 {
+    display: none;
+  }
+  .input-title-alt {
+    display: inline-block;
+  }
+  .range-box {
+    border-radius: 16px;
+  }
+  .range {
+    width: 240px;
+  }
+  .title, .submit-text, .input-value, .submit {
+    font-size: 22px;
+    line-height: 20px;
+  }
+
+  .input-title, .input-title-alt, .input-title-1, .input-value, .summary-title{
+    color: #333E48;
+  }
+  .percentage-box {
+    display: none;
+  }
+  .percentage-box-alt {
+    display: inline-block;
+    background-color: #E0E0E0;
+    border-radius: 12px;
+    width: 66px;
+    height: 48px;
+    padding: 14px;
+    font-size: 22px;
+    line-height: 20px;
+  }
+  .range-box, .submit {
+    width: 280px;
+    height: 60px;
+  }
+  .submit {
+    border-radius: 40px;
+}
+}
